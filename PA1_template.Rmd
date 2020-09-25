@@ -32,18 +32,40 @@ rowdata <- read.csv('activity.csv')
 ## What is mean total number of steps taken per day?
 
 ```{r}
-stepsByDay <- tapply(rowdata$steps, rowdata$date, sum, na.rm=TRUE)
+StepsperDay <- aggregate(rowdata$steps, by=list(date=rowdata$date), sum)
+
+barplot(
+    StepsperDay$x,
+    names.arg = StepsperDay$date,
+    xlab = 'Date',
+    ylab = 'Total number of steps',
+    main = 'Total number of steps per day'
+    )
 
 ```
 
 ## What is the average daily activity pattern?
 
 ```{r}
+avgStepsbyInterval <- aggregate(steps ~ interval, rowdata, mean)
+
+plot(
+    avgStepsbyInterval$interval,
+    avgStepsbyInterval$steps,
+    type = 'l',
+    xlab = 'Intervals',
+    ylab = 'Average number of steps',
+    main = 'Average daily activity pattern')
+
 ```
 
 ## Imputing missing values
 
 ```{r}
+Missing <- sum(is.na(rowdata))
+
+paste('Total number of missing values in this database is', Missing)
+
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
