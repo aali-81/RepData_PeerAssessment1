@@ -7,14 +7,13 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Loading the necessary libraries: 
 # 
 
-```{r}
+
+```r
 library(datasets)
 library(ggplot2)
 ```
@@ -22,7 +21,8 @@ library(ggplot2)
 ## Loading and preprocessing the data
 # 
 
-```{r}
+
+```r
 if(!file.exists('activity.csv')){
     unzip('activity.zip')
 }
@@ -31,22 +31,19 @@ rowdata <- read.csv('activity.csv')
 
 ## What is mean total number of steps taken per day?
 
-```{r}
-stepsByDay <- tapply(rowdata$steps, rowdata$date, sum, na.rm=TRUE)
 
+```r
+stepsByDay <- tapply(rowdata$steps, rowdata$date, sum, na.rm=TRUE)
 ```
 
 ## What is the average daily activity pattern?
 
-```{r}
-```
+
 
 ## Imputing missing values
 
-```{r}
-```
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r}
-```
+
